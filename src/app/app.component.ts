@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -47,7 +53,6 @@ export class AppComponent {
     // عملیات خروج از حساب
     alert('خروج انجام شد!');
   }
-
 
   @HostListener('document:click', ['$event'])
   handleClickOutside(event: MouseEvent) {
