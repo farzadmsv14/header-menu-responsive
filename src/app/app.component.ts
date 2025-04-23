@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +12,7 @@ export class AppComponent {
   isMobile = false;
   isDrawerOpen = false;
   isUserMenuOpen = false;
+  @ViewChild('userMenuRef') userMenuRef!: ElementRef;
 
   user = {
     name: 'فرزاد موسوی',
@@ -45,5 +46,17 @@ export class AppComponent {
   logout() {
     // عملیات خروج از حساب
     alert('خروج انجام شد!');
+  }
+
+
+  @HostListener('document:click', ['$event'])
+  handleClickOutside(event: MouseEvent) {
+    if (
+      this.isUserMenuOpen &&
+      this.userMenuRef &&
+      !this.userMenuRef.nativeElement.contains(event.target)
+    ) {
+      this.isUserMenuOpen = false;
+    }
   }
 }

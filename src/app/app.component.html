@@ -11,13 +11,8 @@
     <button class="btn">تنظیمات</button>
     <button class="btn">پشتیبانی</button>
   </div>
-
-  <div *ngIf="isMobile">
-    <button class="btn" (click)="toggleDrawer()">☰</button>
-  </div>
-
   <!-- پروفایل کاربر با منوی کشویی -->
-  <div class="relative ms-6">
+  <div class="relative ms-6" #userMenuRef>
     <div
       class="flex items-center gap-2 cursor-pointer"
       (click)="toggleUserMenu()"
@@ -47,6 +42,9 @@
         🚪 خروج
       </button>
     </div>
+  </div>
+  <div *ngIf="isMobile">
+    <button class="btn" (click)="toggleDrawer()">☰</button>
   </div>
 </header>
 
